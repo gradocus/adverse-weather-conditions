@@ -14,7 +14,7 @@ d3.timeThursday.getDay = getDay(4);
 d3.timeFriday.getDay = getDay(5);
 d3.timeSaturday.getDay = getDay(6);
 
-d3.json("/adverse-weather-conditions/data/sources.json", function (err, sources) {
+d3.json("data/sources.json", function (err, sources) {
     if (err) throw err;
 
     var ul = d3.select("#sources-list")
@@ -81,7 +81,7 @@ d3.json("/adverse-weather-conditions/data/sources.json", function (err, sources)
         ], city = source.cities[
             d3.select("#vCities").property("value")
         ], awc = [
-            "/adverse-weather-conditions/data", source.url.domain, city.path,
+            "data", source.url.domain, city.path,
         ].join('/') + ".json";
 
         d3.json(awc, function (err, awc) {
