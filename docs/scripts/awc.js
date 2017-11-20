@@ -1,5 +1,24 @@
 "use strict";
 
+if (typeof Date.prototype.toLocaleString !== 'function') {
+    Date.prototype.toLocaleString = function (locales, options) {
+        if (options && options.month) {
+            return [
+                "янв.", "февр.", "март", "апр.", "май", "июнь",
+                "июль", "авг.", "сент.", "окт.", "нояб.", "дек.",
+            ][this.getMonth()];
+        }
+        var pad = function (n) {
+            return n < 10 ? "0" + n : n;
+        };
+        return pad(this.getDate()) + "." + pad(this.getMonth() + 1)
+                                   + "." + this.getFullYear()
+                                   + ", " + pad(this.getHours())
+                                   + ":" + pad(this.getMinutes())
+                                   + ":" + pad(this.getSeconds());
+    };
+}
+
 var getDay = function (i) {
     return function (date) {
         return (date.getDay() + 7 - i) % 7;
