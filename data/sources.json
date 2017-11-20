@@ -1,70 +1,82 @@
-[{
-    "atime": "2017-11-19T07:30:27Z",
-    "cities": [{
+[
+    {
+        "atime": "2017-11-19T07:30:27Z",
+        "cities": [
+            {
+                "name": {
+                    "en": "Chelyabinsk",
+                    "ru": "Челябинск"
+                },
+                "path": "chelyabinsk"
+            }
+        ],
         "name": {
-            "en": "Chelyabinsk",
-            "ru": "Челябинск"
+            "en": "City administration of Chelyabinsk",
+            "ru": "Администрация города Челябинска"
         },
-        "path": "chelyabinsk"
-    }],
-    "name": {
-        "en": "City administration of Chelyabinsk",
-        "ru": "Администрация города Челябинска"
+        "url": {
+            "domain": "cheladmin.ru",
+            "root": {
+                "en": "https://cheladmin.ru/en",
+                "ru": "https://cheladmin.ru/ru"
+            }
+        }
     },
-    "url": {
-        "domain": "cheladmin.ru",
-        "root": {
-            "en": "https://cheladmin.ru/en",
-            "ru": "https://cheladmin.ru/ru"
+    {
+        "atime": "2017-11-19T07:38:04Z",
+        "cities": [
+            {
+                "name": {
+                    "en": "Chelyabinsk",
+                    "ru": "Челябинск"
+                },
+                "path": "chelyabinsk"
+            },
+            {
+                "name": {
+                    "en": "Magnitogorsk",
+                    "ru": "Магнитогорск"
+                },
+                "path": "magnitogorsk"
+            },
+            {
+                "name": {
+                    "en": "Karabash",
+                    "ru": "Карабаш"
+                },
+                "path": "karabash"
+            },
+            {
+                "name": {
+                    "en": "Korkino",
+                    "ru": "Коркино"
+                },
+                "path": "korkino"
+            },
+            {
+                "name": {
+                    "en": "Satka",
+                    "ru": "Сатка"
+                },
+                "path": "satka"
+            },
+            {
+                "name": {
+                    "en": "Troitsk",
+                    "ru": "Троицк"
+                },
+                "path": "troitsk"
+            }
+        ],
+        "name": {
+            "en": "Ministry of Ecology of the Chelyabinsk region",
+            "ru": "Министерство экологии Челябинской области"
+        },
+        "url": {
+            "domain": "mineco174.eps74.ru",
+            "root": {
+                "ru": "http://mineco174.eps74.ru"
+            }
         }
     }
-}, {
-    "atime": "2017-11-19T07:38:04Z",
-    "cities": [{
-        "name": {
-            "en": "Chelyabinsk",
-            "ru": "Челябинск"
-        },
-        "path": "chelyabinsk"
-    }, {
-        "name": {
-            "en": "Magnitogorsk",
-            "ru": "Магнитогорск"
-        },
-        "path": "magnitogorsk"
-    }, {
-        "name": {
-            "en": "Karabash",
-            "ru": "Карабаш"
-        },
-        "path": "karabash"
-    }, {
-        "name": {
-            "en": "Korkino",
-            "ru": "Коркино"
-        },
-        "path": "korkino"
-    }, {
-        "name": {
-            "en": "Satka",
-            "ru": "Сатка"
-        },
-        "path": "satka"
-    }, {
-        "name": {
-            "en": "Troitsk",
-            "ru": "Троицк"
-        },
-        "path": "troitsk"
-    }],
-    "name": {
-        "en": "Ministry of Ecology of the Chelyabinsk region",
-        "ru": "Министерство экологии Челябинской области"
-    },
-    "url": {
-        "domain": "mineco174.eps74.ru",
-        "root": {
-            "ru": "http://mineco174.eps74.ru"
-        }
-    }
-}]
+]
