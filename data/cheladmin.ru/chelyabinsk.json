@@ -1926,5 +1926,13 @@
         ],
         "level": 1,
         "path": "soobshcheniya-o-nmu"
+    },
+    {
+        "daterange": [
+            "2017-11-20T20:00:00+05:00",
+            "2017-11-21T19:00:00+05:00"
+        ],
+        "level": 1,
+        "path": "soobshcheniya-o-nmu"
     }
 ]
