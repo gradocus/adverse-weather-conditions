@@ -78,5 +78,27 @@
                 "ru": "http://mineco174.eps74.ru"
             }
         }
+    },
+    {
+        "atime": "2017-11-21T015:54:32Z",
+        "cities": [
+            {
+                "name": {
+                    "en": "Chelyabinsk",
+                    "ru": "Челябинск"
+                },
+                "path": "chelyabinsk"
+            }
+        ],
+        "name": {
+            "en": "Hydrometeorological Center of the Chelyabinsk",
+            "ru": "Челябинский гидрометеоцентр"
+        },
+        "url": {
+            "domain": "chelpogoda.ru",
+            "root": {
+                "ru": "http://www.chelpogoda.ru"
+            }
+        }
     }
 ]
