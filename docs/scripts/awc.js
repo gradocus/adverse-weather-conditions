@@ -33,6 +33,8 @@ d3.timeThursday.getDay = getDay(4);
 d3.timeFriday.getDay = getDay(5);
 d3.timeSaturday.getDay = getDay(6);
 
+var toISODateString = d3.timeFormat("%Y-%m-%d");
+
 d3.json("data/sources.json", function (err, sources) {
     if (err) throw err;
 
@@ -184,7 +186,7 @@ d3.json("data/sources.json", function (err, sources) {
                 .attr("y", function (d) {
                     return d3.timeMonday.getDay(d) * size;
                 })
-                .datum(d3.timeFormat("%Y-%m-%d"));
+                .datum(toISODateString);
 
             svg.append("g").attr("fill", "none")
                 .attr("stroke", "#000")
@@ -219,7 +221,7 @@ d3.json("data/sources.json", function (err, sources) {
                                            , d.setHours(0)
                                            , d.setMinutes(0)) {
                     data.push({
-                        date: d.toISOString().split('T')[0],
+                        date: toISODateString(d),
                         value: row.level,
                     });
                 }
