@@ -108,9 +108,11 @@ d3.json("data/sources.json", function (err, sources) {
         d3.json(awc, function (err, awc) {
             if (err) throw err;
 
-            var awcDates = [
+            var awcDates = awc.length ? [
                 new Date(awc[0].daterange[0]),
                 new Date(awc[awc.length - 1].daterange[1]),
+            ] : [
+                new Date(), new Date(),
             ];
             var size = 18;
             var offsetLeft = 25,
@@ -192,7 +194,7 @@ d3.json("data/sources.json", function (err, sources) {
                 .attr("stroke", "#000")
                 .selectAll("path").data(function (d) {
                     return d3.timeMonths(new Date(d, 0, 1)
-                                      , new Date(d + 1, 0, 1));
+                                       , new Date(d + 1, 0, 1));
             }).enter().append("path")
               .attr("d", function getMonthPath(t0) {
                 var t1 = new Date(t0.getFullYear()
@@ -217,9 +219,9 @@ d3.json("data/sources.json", function (err, sources) {
             }).object(awc.reduce(function (data, row) {
                 var start = new Date(row.daterange[0]),
                     end = new Date(row.daterange[1]);
-                for (var d = start; d < end; d.setDate(d.getDate() + 1)
-                                           , d.setHours(0)
-                                           , d.setMinutes(0)) {
+                for (var d = start; d <= end; d.setDate(d.getDate() + 1)
+                                            , d.setHours(0)
+                                            , d.setMinutes(0)) {
                     data.push({
                         date: toISODateString(d),
                         value: row.level,
