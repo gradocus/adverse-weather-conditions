@@ -33,7 +33,9 @@ d3.timeThursday.getDay = getDay(4);
 d3.timeFriday.getDay = getDay(5);
 d3.timeSaturday.getDay = getDay(6);
 
-var toISODateString = d3.timeFormat("%Y-%m-%d");
+var toISODateString = function (date) {
+    return date.toISOString().split('T')[0];
+};
 
 d3.json("data/sources.json", function (err, sources) {
     if (err) throw err;
@@ -81,6 +83,11 @@ d3.json("data/sources.json", function (err, sources) {
         var source = sources[
             d3.select("#vSources").property("value")
         ];
+        source.cities.sort(function (city1, city2) {
+            if (city1.name.ru > city2.name.ru) return 1;
+            if (city1.name.ru < city2.name.ru) return -1;
+            return 0
+        });
         d3.select("#vCities").html(null)
             .on("change", onCityChange)
             .selectAll("option")
@@ -120,9 +127,31 @@ d3.json("data/sources.json", function (err, sources) {
             var width = offsetLeft * 2 + size * 53 + 2,
                 height = offsetTop + size * 7 + 2;
 
-            var color = d3.scaleQuantize().domain([ 0, 3 ]).range([
-                "#FFFFFF", "#FFCDD2", "#E57373", "#F44336",
-            ]);
+            var color = null;
+            switch (source.type) {
+                case 'awc':
+                    color = d3.scaleQuantize().domain([ 0, 3 ]).range([
+                        "#FFFFFF", "#FFCDD2", "#E57373", "#F44336",
+                    ]);
+                    break;
+                case 'br':
+                    color = d3.scaleQuantize().domain([ 0, 100 ]).range(
+                        Array.apply(null, {
+                            length: 101,
+                        }).map(function (n, i) {
+                            if (i === 0) return "#FFFFFF";
+                            else if (i < 20) return "#00FF00";
+                            else if (i < 50) return "#FFFF00";
+                            else return "#FF0000";
+                        })
+                    );
+                    console.log(color)
+                    break;
+                default:
+                    color = d3.scaleQuantize().domain([ 0, 1 ]).range([
+                        "#FFFFFF", "#000000",
+                    ]);
+            }
 
             var svg = d3.select("#vCharts").html(null)
                 .selectAll("svg")
@@ -177,7 +206,7 @@ d3.json("data/sources.json", function (err, sources) {
                 .selectAll("rect")
                 .data(function (d) {
                     return d3.timeDays(new Date(d, 0, 1)
-                                    , new Date(d + 1, 0, 1));
+                                     , new Date(d + 1, 0, 1));
                 })
                 .enter().append("rect")
                 .attr("width", size)
@@ -188,7 +217,7 @@ d3.json("data/sources.json", function (err, sources) {
                 .attr("y", function (d) {
                     return d3.timeMonday.getDay(d) * size;
                 })
-                .datum(toISODateString);
+                .datum(d3.timeFormat("%Y-%m-%d"));
 
             svg.append("g").attr("fill", "none")
                 .attr("stroke", "#000")
@@ -213,18 +242,20 @@ d3.json("data/sources.json", function (err, sources) {
             var data = d3.nest().key(function (d) {
                 return d.date;
             }).rollup(function (d) {
-                return Math.max.apply(Math, d.map(function (d) {
+                var maxValue = Math.max.apply(Math, d.map(function (d) {
                     return d.value;
                 }));
+                return d.filter(function (d) {
+                    return d.value = maxValue;
+                })[0];
             }).object(awc.reduce(function (data, row) {
-                var start = new Date(row.daterange[0]),
-                    end = new Date(row.daterange[1]);
-                for (var d = start; d <= end; d.setDate(d.getDate() + 1)
-                                            , d.setHours(0)
-                                            , d.setMinutes(0)) {
+                var start = new Date(row.daterange[0].split('T')[0]),
+                    end = new Date(row.daterange[1].split('T')[0]);
+                for (var d = start; d <= end; d.setDate(d.getDate() + 1)) {
                     data.push({
-                        date: toISODateString(d),
+                        date: d.toISOString().split('T')[0],
                         value: row.level,
+                        url: source.url.root.ru + row.path,
                     });
                 }
                 return data;
@@ -232,11 +263,23 @@ d3.json("data/sources.json", function (err, sources) {
 
             rect.filter(function (d) {
                 return d in data;
-            }).attr("fill", function (d) {
-                return color(data[d]);
+            }).attr("cursor", "pointer")
+              .attr("fill", function (d) {
+                return color(data[d].value);
+            }).on("click", function (d, row) {
+                console.log(data[d])
             }).html(null).append("title").text(function (d) {
-                return d.split('-').reverse().join('.')
-                    + ": НМУ " + data[d] + " степени опасности";
+                var date = d.split('-').reverse().join('.');
+                switch (source.type) {
+                    case 'awc':
+                        return date + ": НМУ "
+                            + data[d].value + " степени опасности";
+                    case 'br':
+                        return date + ": фоновая радиация "
+                            + data[d].value + " мк/Рч";
+                    default:
+                        return date + ": " + data[d].value;
+                }
             });
         });
     }
