@@ -145,7 +145,6 @@ d3.json("data/sources.json", function (err, sources) {
                             else return "#FF0000";
                         })
                     );
-                    console.log(color)
                     break;
                 default:
                     color = d3.scaleQuantize().domain([ 0, 1 ]).range([
@@ -267,7 +266,7 @@ d3.json("data/sources.json", function (err, sources) {
               .attr("fill", function (d) {
                 return color(data[d].value);
             }).on("click", function (d, row) {
-                console.log(data[d])
+                window.open(data[d].url, '_blank');
             }).html(null).append("title").text(function (d) {
                 var date = d.split('-').reverse().join('.');
                 switch (source.type) {
