@@ -140,8 +140,8 @@ d3.json("data/sources.json", function (err, sources) {
                             length: 101,
                         }).map(function (n, i) {
                             if (i === 0) return "#FFFFFF";
-                            else if (i < 20) return "#00FF00";
-                            else if (i < 50) return "#FFFF00";
+                            else if (i <= 20) return "#00FF00";
+                            else if (i <= 50) return "#FFFF00";
                             else return "#FF0000";
                         })
                     );
@@ -275,7 +275,7 @@ d3.json("data/sources.json", function (err, sources) {
                         return date + ": НМУ "
                             + data[d].value + " степени опасности";
                     case 'br':
-                        return date + ": фоновая радиация "
+                        return date + ": Фоновая радиация "
                             + data[d].value + " мк/Рч";
                     default:
                         return date + ": " + data[d].value;
