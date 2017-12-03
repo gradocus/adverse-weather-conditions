@@ -1,6 +1,6 @@
 [
     {
-        "atime": "2017-12-03T04:23:57Z",
+        "atime": "2017-12-03T09:58:03Z",
         "cities": [
             {
                 "name": {
@@ -18,8 +18,8 @@
         "url": {
             "domain": "cheladmin.ru",
             "root": {
-                "en": "https://cheladmin.ru/en",
-                "ru": "https://cheladmin.ru/ru"
+                "en": "https://cheladmin.ru/en/",
+                "ru": "https://cheladmin.ru/ru/"
             }
         }
     },
@@ -77,12 +77,12 @@
         "url": {
             "domain": "mineco174.eps74.ru",
             "root": {
-                "ru": "http://mineco174.eps74.ru"
+                "ru": "http://mineco174.eps74.ru/"
             }
         }
     },
     {
-        "atime": "2017-12-03T04:23:57Z",
+        "atime": "2017-12-03T09:58:03Z",
         "cities": [
             {
                 "name": {
@@ -100,12 +100,12 @@
         "url": {
             "domain": "chelpogoda.ru",
             "root": {
-                "ru": "http://www.chelpogoda.ru"
+                "ru": "http://www.chelpogoda.ru/"
             }
         }
     },
     {
-        "atime": "2017-12-03T04:24:03Z",
+        "atime": "2017-12-03T09:58:10Z",
         "cities": [
             {
                 "name": {
@@ -2058,7 +2058,7 @@
         "url": {
             "domain": "egasmro.ru",
             "root": {
-                "ru": "http://egasmro.ru/ru"
+                "ru": "http://egasmro.ru/ru/"
             }
         }
     }
