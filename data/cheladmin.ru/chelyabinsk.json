@@ -1990,5 +1990,45 @@
         ],
         "level": 1,
         "path": "soobshcheniya-o-nmu"
+    },
+    {
+        "daterange": [
+            "2017-12-12T19:00:00+05:00",
+            "2017-12-13T19:00:00+05:00"
+        ],
+        "level": 1,
+        "path": "soobshcheniya-o-nmu"
+    },
+    {
+        "daterange": [
+            "2017-12-15T19:00:00+05:00",
+            "2017-12-18T19:00:00+05:00"
+        ],
+        "level": 1,
+        "path": "soobshcheniya-o-nmu"
+    },
+    {
+        "daterange": [
+            "2017-12-18T19:00:00+05:00",
+            "2017-12-19T19:00:00+05:00"
+        ],
+        "level": 1,
+        "path": "soobshcheniya-o-nmu"
+    },
+    {
+        "daterange": [
+            "2017-12-19T19:00:00+05:00",
+            "2017-12-20T19:00:00+05:00"
+        ],
+        "level": 1,
+        "path": "soobshcheniya-o-nmu"
+    },
+    {
+        "daterange": [
+            "2017-12-20T19:00:00+05:00",
+            "2017-12-21T19:00:00+05:00"
+        ],
+        "level": 1,
+        "path": "soobshcheniya-o-nmu"
     }
 ]
